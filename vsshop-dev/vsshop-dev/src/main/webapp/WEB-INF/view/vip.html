@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>视频会员自助购买_丹池网</title>
+    <link rel="icon" href="${ctxPath}/static/img/logo.png"/>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="视频会员自助购买,自动发货卡密信息,每日更新各大视频网站会员充值优惠信息">
+    <meta name="keywords" content="视频会员,自动发货,丹池网">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="${ctxPath}/static/layui/css/layui.css">
+    <link rel="stylesheet" href="${ctxPath}/static/layui/global.css">
+    <script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${ctxPath}/static/layui/layui.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?31cc9baa0178e2444ed4276039695007";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<div class="layui-header header header-doc">
+    <div class="layui-main">
+        <a class="logo" href="/">
+            <img src="${ctxPath}/static/img/logo.png" alt="SheepSun">
+        </a>
+        @if(ispc){
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item"><a href="/sheep">赚客前沿</a></li>
+            <li class="layui-nav-item layui-this"><a href="/vip">视频会员</a></li>
+            <li class="layui-nav-item"><a href="/down">文件下载</a></li>
+        </ul>
+        @}
+    </div>
+</div>
+@if(!ispc){
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><a href="/sheep">赚客前沿</a></li>
+    <li class="layui-nav-item layui-this"><a href="/vip">视频会员</a></li>
+    <li class="layui-nav-item"><a href="/down">文件下载</a></li>
+</ul>
+@}
+<div class="layui-main">
+
+    <div class="container">
+        <div class="row">
+            <div class="layui-col-md8 layui-col-space2 layui-col-md-offset2">
+                <div style="text-align: center;margin-top: 10%;margin-bottom: 25px"><h1>视频网站会员自助购买</h1></div>
+                <table class="layui-hide" id="vip"></table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#vip'
+            , url: '/api/getVipList'
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.status, //解析接口状态
+                    "msg": res.message, //解析提示文本
+                    "data": res.result //解析数据列表
+                };
+            }
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                {field: 'index', width: '10%', title: '序号', sort: true,align: 'center'}
+                , {field: 'name', width: '25%', minWidth: 100, title: '会员名称',align: 'center'}
+                , {field: 'remark', width: '30%', title: '描述',align: 'center'}
+                , {field: 'price', width: '10%', title: '单价',align: 'center'}
+                , {
+                    field: 'stock', width: '10%', title: '库存',align: 'center', templet: function (d) {
+                        if (d.stock > 0) {
+                            return '<div><span style="color: #ff5722;">'+d.stock+'</span></div>';
+                        }
+                    }
+                }
+                , {
+                    field: 'link', width: '15%', minWidth: 100, title: '购买地址',align: 'center', templet: function (d) {
+                        if (d.stock > 0) {
+                            return '<div style="text-align: center"><a href="' + d.link + '" style="color: #ff5722">购买</a></div>';
+                        } else {
+                            return "售罄";
+                        }
+
+                    }
+                }
+            ]]
+        });
+    });
+</script>
+
+
+</body>
+</html>

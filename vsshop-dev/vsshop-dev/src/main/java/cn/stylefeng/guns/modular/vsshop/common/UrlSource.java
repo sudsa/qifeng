@@ -1,0 +1,8 @@
+package cn.stylefeng.guns.modular.vsshop.common;
+
+public enum UrlSource {
+    UNKNOW,CSDN,BAIDUWENKU,BAOTU,QIANTU,
+    QIANKU,NINETY,SHETU,NITU,WOTU,BANTU,
+    DANGTU,MIYUANSU,MIZHI,LIUTU,XIONGMAO,
+    WUYIWU,TUXING,FENGYUN,TUKE;
+}

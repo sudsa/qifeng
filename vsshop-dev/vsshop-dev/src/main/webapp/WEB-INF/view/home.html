@@ -1,0 +1,93 @@
+<html lang="zh-CN">
+<head>
+    <title>丹池网_网络资源自助服务</title>
+    <meta charset="utf-8" />
+    <meta name="Description" content="丹池网是一个网络资源自助服务平台,提供低价视频网站会员,CSDN,百度文库,千图,包图,千库,90后等文件素材自助下载服务,实时赚客前沿资讯等">
+    <meta name="keywords" content="视频网站会员,文件素材自助下载,赚客前沿资讯">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta baidu-gxt-verify-token="80c9dee98fdb1271b418356c5e582127">
+    <link rel="icon" href="${ctxPath}/static/img/logo.png" />
+    <link rel="stylesheet" href="${ctxPath}/static/layui/css/layui.css">
+    <link rel="stylesheet" href="${ctxPath}/static/layui/global.css">
+    <script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${ctxPath}/static/layui/layui.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?31cc9baa0178e2444ed4276039695007";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<div class="layui-header header header-doc">
+    <div class="layui-main">
+        <a class="logo" href="/">
+            <img src="${ctxPath}/static/img/logo.png" alt="SheepSun">
+        </a>
+        @if(ispc){
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item"><a href="/sheep">赚客前沿</a></li>
+            <li class="layui-nav-item"><a href="/vip">视频会员</a></li>
+            <li class="layui-nav-item"><a href="/down">文件下载</a></li>
+        </ul>
+        @}
+
+    </div>
+</div>
+@if(!ispc){
+    <ul class="layui-nav" lay-filter="">
+        <li class="layui-nav-item"><a href="/sheep">赚客前沿</a></li>
+        <li class="layui-nav-item"><a href="/vip">视频会员</a></li>
+        <li class="layui-nav-item"><a href="/down">文件下载</a></li>
+    </ul>
+@}
+
+<div class="site-banner">
+    <div class="site-banner-bg" style="background-image: url(//res.layui.com/static/images/layui/banner/spring.jpg?v=0); background-size: cover;">
+    </div>
+    <div class="site-banner-main">
+        <div class="site-zfj site-zfj-anim">
+            <i class="layui-icon" style="color: #fff; color: rgba(255,255,255,.7);"></i>
+        </div>
+        <div class="layui-anim site-desc site-desc-anim">
+            <h1 class="web-font-desc">丹池网-资源自助服务</h1>
+            <cite></cite>
+        </div>
+    </div>
+</div>
+<div class="layui-main">
+    <ul class="site-idea">
+        <li>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>赚客前沿</legend>
+                <p>最新网络优惠活动线报，让你快人一步</p>
+            </fieldset>
+        </li>
+        <li>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>网站会员</legend>
+                <p>即使看视频广告，我看的也是VIP广告</p>
+            </fieldset>
+        </li>
+        <li>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>文件下载</legend>
+                <p>CSDN、百度文库、豆丁文库、千图网文件自助下载服务</p>
+            </fieldset>
+        </li>
+    </ul>
+
+</div>
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use(['element'], function(){
+    });
+
+</script>
+
+</body>
+</html>

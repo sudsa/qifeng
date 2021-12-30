@@ -1,0 +1,44 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="uuid" name="uuid" value="${item.uuid}" underline="true"/>
+                            <#input id="customerCode" name="用户码" value="${item.customerCode}" underline="true"/>
+                            <#input id="name" name="用户名" value="${item.name}" underline="true"/>
+                            <#input id="pwd" name="密码" value="${item.pwd}" underline="true"/>
+                            <#input id="nick" name="昵称" value="${item.nick}" underline="true"/>
+                            <#input id="email" name="邮箱" value="${item.email}" underline="true"/>
+                            <#input id="mobile" name="手机号" value="${item.mobile}" underline="true"/>
+                            <#input id="wechat" name="微信" value="${item.wechat}" underline="true"/>
+                            <#input id="ip" name="ip" value="${item.ip}" underline="true"/>
+                            <#input id="ownerName" name="拥有者" value="${item.ownerName}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="ownerUuid" name="拥有者_uuid" value="${item.ownerUuid}" underline="true"/>
+                            <#input id="planName" name="计划名称" value="${item.planName}" underline="true"/>
+                            <#input id="planUuid" name="计划类型" value="${item.planUuid}" underline="true"/>
+                            <#input id="type" name="类型：1日；2月；3季度；4半年；5年；6终身；7次" value="${item.type}" underline="true"/>
+                            <#input id="status" name="状态：1:未使用，2已使用，3作废" value="${item.status}" underline="true"/>
+                            <#input id="insertTime" name="创建时间" value="${item.insertTime}" underline="true"/>
+                            <#input id="firstTime" name="首次登陆时间" value="${item.firstTime}" underline="true"/>
+                            <#input id="expiredTime" name="失效时间" value="${item.expiredTime}" underline="true"/>
+                            <#input id="lastTime" name="最后时间" value="${item.lastTime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="VssCustomerInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="VssCustomerInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssCustomer/vssCustomer_info.js"></script>
+@}

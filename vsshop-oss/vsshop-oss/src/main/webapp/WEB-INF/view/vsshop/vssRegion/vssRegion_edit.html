@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input id="statusValue" type="hidden"   value="${item.status}">
+            <input id="otherShareValue" type="hidden"   value="${item.otherShare}">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="uuid" name="uuid" value="${item.uuid}" underline="true"/>
+                            <#input id="name" name="名称" value="${item.name}" underline="true"/>
+                            <#input id="citys" name="城市列表" value="${item.citys}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="domain" name="域名" value="${item.domain}" underline="true"/>
+                    <#select id="status" name="状态" value="${item.status}">
+                        <option value="1">正常</option>
+                        <option value="2">禁用</option>
+                    </#select>
+                    <#select id="otherShare" name="他域共享" value="${item.otherShare}">
+                        <option value="1">正常</option>
+                        <option value="2">禁用</option>
+                    </#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="VssRegionInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="VssRegionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssRegion/vssRegion_info.js"></script>
+@}

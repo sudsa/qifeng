@@ -1,0 +1,23 @@
+@layout("/common/_container.html"){
+<div class="col-sm-6  col-sm-offset-3">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>代理信息</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <#input id="roleid" name="余额" underline="true" value="${vssAgent.balance}" disabled="disabled"/>
+                        <#input id="roleid" name="单价" underline="true" value="${vssAgent.price}" disabled="disabled"/>
+                        <#input id="roleid" name="当日下载" underline="true" value="${vssAgent.daydown}" disabled="disabled"/>
+                        <#input id="roleid" name="每日限额" underline="true" value="${vssAgent.daylimit}" disabled="disabled"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssAgent/vssAgent.js"></script>
+@}

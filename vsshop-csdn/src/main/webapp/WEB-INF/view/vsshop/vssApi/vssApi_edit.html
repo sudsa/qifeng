@@ -1,0 +1,34 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="uuid" name="uuid" value="${item.uuid}" underline="true"/>
+                            <#input id="code" name="" value="${item.code}" underline="true"/>
+                            <#input id="downUrl" name="" value="${item.downUrl}" underline="true"/>
+                            <#input id="apiUrl" name="" value="${item.apiUrl}" underline="true"/>
+                            <#input id="status" name="" value="${item.status}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="order" name="" value="${item.order}" underline="true"/>
+                            <#input id="msg" name="" value="${item.msg}" underline="true"/>
+                            <#input id="insertTime" name="" value="${item.insertTime}" underline="true"/>
+                            <#input id="usedTime" name="" value="${item.usedTime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="VssApiInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="VssApiInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssApi/vssApi_info.js"></script>
+@}

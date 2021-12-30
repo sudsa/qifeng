@@ -1,0 +1,31 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="uuid" name="uuid" value="${item.uuid}" underline="true"/>
+                            <#input id="name" name="网站名称" value="${item.name}" underline="true"/>
+                            <#input id="abbr" name="缩写" value="${item.abbr}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="domain" name="域名" value="${item.domain}" underline="true"/>
+                            <#input id="status" name="1:正常；2禁用" value="${item.status}" underline="true"/>
+                            <#input id="insertTime" name="插入时间" value="${item.insertTime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="VssSiteInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="VssSiteInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssSite/vssSite_info.js"></script>
+@}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.VssUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.VssUser">
+        <id column="uuid" property="uuid" />
+        <result column="source" property="source" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="coin" property="coin" />
+        <result column="cookie" property="cookie" />
+        <result column="type" property="type" />
+        <result column="login_status" property="loginStatus" />
+        <result column="status" property="status" />
+        <result column="day_down" property="dayDown" />
+        <result column="plan_uuid" property="planUuid" />
+        <result column="last_login_time" property="lastLoginTime" />
+        <result column="insert_time" property="insertTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        uuid, source, username, password, coin, cookie, type, login_status, status, day_down, plan_uuid, last_login_time, insert_time
+    </sql>
+
+    <select id="getVipCoinUser" parameterType="map">
+        SELECT
+        a.*
+        FROM
+        vss_user a,
+        vss_user_site_log b,
+        vss_plan_site c
+        WHERE
+        a.uuid = b.user_uuid
+        AND b.site_uuid = c.site_uuid
+        AND c.site_uuid = #{siteUuid}
+        AND a.`status` = "1"
+        AND a.max_down > a.downed
+        AND b.is_vip = "2"
+        AND b.valid_coin > 5
+        AND b.day_down <![CDATA[<]]> c.daydown
+    </select>
+    <select id="getNormalCoinUser" parameterType="map">
+        SELECT
+        a.*
+        FROM
+        vss_user a,
+        vss_user_site_log b,
+        vss_plan_site c
+        WHERE
+        a.uuid = b.user_uuid
+        AND b.site_uuid = c.site_uuid
+        AND c.site_uuid = #{siteUuid}
+        AND a.`status` = "1"
+        AND a.max_down <![CDATA[>]]> a.downed
+        AND b.is_vip = "1"
+        AND b.valid_coin <![CDATA[>]]>#{coin}
+        AND b.day_down <![CDATA[<]]> c.daydown
+    </select>
+</mapper>

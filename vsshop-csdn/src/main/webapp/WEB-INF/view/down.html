@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CSDN文件免积分_自助下载_丹池网</title>
+		<link rel="icon" href="${ctxPath}/static/img/logo.png" />
+		<meta charset="utf-8" />
+		<meta name="Description" content="CSDN,百度文库,千图,包图,千库,90后等免积分会员站币,文件素材自助下载服务">
+		<meta name="keywords" content="CSDN文件免积分,自助下载,丹池网">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="${ctxPath}/static/layui/css/layui.css">
+		<link rel="stylesheet" href="${ctxPath}/static/layui/global.css">
+		<script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
+		<script src="${ctxPath}/static/layui/layui.js"></script>
+		<script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?31cc9baa0178e2444ed4276039695007";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+		</script>
+	</head>
+	<body>
+	<div class="layui-header header header-doc">
+		<div class="layui-main">
+			<a class="logo" href="/">
+				<img src="${ctxPath}/static/img/logo.png" alt="SheepSun">
+			</a>
+			@if(ispc){
+				<ul class="layui-nav" lay-filter="">
+					<li class="layui-nav-item"><a href="/sheep">赚客前沿</a></li>
+					<li class="layui-nav-item"><a href="/vip">视频会员</a></li>
+					<li class="layui-nav-item layui-this"><a href="/down">文件下载</a></li>
+				</ul>
+			@}
+		</div>
+	</div>
+	@if(!ispc){
+	<ul class="layui-nav" lay-filter="">
+		<li class="layui-nav-item"><a href="/sheep">赚客前沿</a></li>
+		<li class="layui-nav-item"><a href="/vip">视频会员</a></li>
+		<li class="layui-nav-item layui-this"><a href="/down">文件下载</a></li>
+	</ul>
+	@}
+	<div class="layui-main">
+
+		<div class="container">
+			<div class="row">
+				<div class="layui-col-md8 layui-col-space2 layui-col-md-offset2">
+					<div style="text-align: center;margin-top: 10%;margin-bottom: 25px"><h1>CSDN文件自助下载</h1></div>
+					<fieldset class="layui-elem-field">
+						<div class="layui-field-box">
+							<div class="layui-form layui-form-pane">
+								<div class="layui-form-item">
+									<label class="layui-form-label">激活码</label>
+									<div class="layui-input-block">
+										<input type="text" name="code" id="code" required  lay-verify="required" placeholder="激活码" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">下载地址</label>
+									<div class="layui-input-block">
+										<input type="text" name="downUrl" id="downUrl" required lay-verify="required" placeholder="下载地址: 如https://download.csdn.net/download/weixin_43029597/11096908" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">邮箱地址</label>
+									<div class="layui-input-block">
+										<input type="text" name="email" id="email" placeholder="邮箱接收地址，可不填" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<div  style="text-align: center">
+										<button type="button" class="layui-btn" style="width: 100px" onclick="down()">下载</button>
+									</div>
+									<a id="file" download=""></a>
+								</div>
+
+								<div class="layui-form-item" id="buy">
+									<div style="text-align: center">
+										<a style="margin-left: 30px;color: #ff5722;" href="${url}">没有激活码，去购买>></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset class="layui-elem-field" style="margin-top: 10%">
+
+						<legend style="font-size: 17px">注意事项</legend>
+						<div class="layui-field-box">
+							<strong style="font-size: 13px">1.适用于常规CSDN文件自助下载</strong>
+							<hr class="layui-bg-blue">
+							<h6>2.大文件下载请耐心等候</h6>
+							<hr class="layui-bg-green">
+							<h6>3.其他问题请联系商家处理</h6>
+						</div>
+					</fieldset>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        var downUrlReg=/(https:\/\/download.csdn.net\/download\/\w+\/\w+)/;
+        var downUrl2Reg=/(https:\/\/download.csdn.net\/index.php\/mobile\/source\/download\/\w+)/;
+        layui.use(['element','form'], function(){
+            var element = layui.element;
+            var form = layui.form;
+            var code=getParam("code");
+            $("#code").val(code);
+			if(code!=null && typeof code!='undefined' && code.length>0){
+			    $('#buy').hide();
+			}
+            /**
+             * 获取指定的URL参数值
+             */
+            function getParam(paramName) {
+                paramValue = "", isFound = !1;
+                if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+                    arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+                    while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+                }
+                return paramValue == "" && (paramValue = null), paramValue
+            }
+        });
+        function down() {
+            $("#file").attr("href","")
+            $("#file").attr("download","")
+            var code=$("#code").val();
+            var downUrl=$("#downUrl").val();
+            if(!(downUrlReg.test(downUrl) || downUrl2Reg.test(downUrl))){
+                layer.msg("请输入正确下载地址格式！https://download.csdn.net/download/xx/xx");
+                return ;
+            }
+            var email=$("#email").val();
+            var index=layer.load(2,{
+                shade: [0.5,"#e4e2e6"]
+            });
+            $.ajax({ url: "/api/getDownloadFile",data: {"code":code,"downUrl":downUrl,"email":email}, success: function(response){
+                    layer.close(index);
+                    if(response.status==1){
+                        layer.msg("下载成功！"+response.msg);
+                        var path=response.result;
+                        $("#file").attr("href",path)
+                        $("#file").attr("download",path.substr(path.lastIndexOf("/")+1))
+						document.getElementById("file").click();
+                    }else{
+                        layer.msg(response.msg);
+                    }
+                }});
+        }
+	</script>
+
+	</body>
+</html>

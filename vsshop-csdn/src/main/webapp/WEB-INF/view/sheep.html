@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>赚客前沿_丹池网</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="丹池网赚客前沿模块,融合各大羊毛网站最优惠,最简单的实时线报信息">
+    <meta name="keywords" content="赚客前沿资讯,实时撸羊毛线报,丹池网">
+    <link rel="icon" href="${ctxPath}/static/img/logo.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="${ctxPath}/static/layui/css/layui.css">
+    <link rel="stylesheet" href="${ctxPath}/static/layui/global.css">
+    <script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${ctxPath}/static/layui/layui.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?31cc9baa0178e2444ed4276039695007";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<div class="layui-header header header-doc">
+    <div class="layui-main">
+        <a class="logo" href="/">
+            <img src="${ctxPath}/static/img/logo.png" alt="SheepSun">
+        </a>
+        @if(ispc){
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item layui-this"><a href="/sheep">赚客前沿</a></li>
+            <li class="layui-nav-item"><a href="/vip">视频会员</a></li>
+            <li class="layui-nav-item"><a href="/down">文件下载</a></li>
+        </ul>
+        @}
+    </div>
+</div>
+@if(!ispc){
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item layui-this"><a href="/sheep">赚客前沿</a></li>
+    <li class="layui-nav-item"><a href="/vip">视频会员</a></li>
+    <li class="layui-nav-item"><a href="/down">文件下载</a></li>
+</ul>
+@}
+<div class="layui-main">
+
+    <div class="container">
+        <div class="row">
+            <div class="layui-col-md8 layui-col-space2 layui-col-md-offset2">
+                <div style="text-align: center;margin-top: 10%;margin-bottom: 25px"><h1>赚客前沿即将开发，敬请期待</h1></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

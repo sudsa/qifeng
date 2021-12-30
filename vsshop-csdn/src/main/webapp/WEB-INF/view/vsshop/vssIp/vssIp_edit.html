@@ -1,0 +1,44 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins" xmlns="http://www.w3.org/1999/html">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input id="masterValue" type="hidden"   value="${item.master}">
+            <input id="statusValue" type="hidden"   value="${item.status}">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="uuid" name="uuid" value="${item.uuid}" underline="true"/>
+                            <#input id="ip" name="ip" value="${item.ip}" />
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">区域</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="regionUuid" name="regionUuid" value="${item.regionUuid}">
+
+                            </select>
+                        </div>
+                    </div>
+                    <#select id="master" name="是否主服务器" value="${item.master}">
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </#select>
+                    <#select id="status" name="状态" value="${item.status}">
+                            <option value="1">正常</option>
+                            <option value="2">禁用</option>
+                     </#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="VssIpInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="VssIpInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssIp/vssIp_info.js"></script>
+@}

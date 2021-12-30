@@ -1,0 +1,46 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>文件提取</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <#NameCon id="downUrl" name="下载地址" />
+                                <#NameCon id="email" name="邮箱地址" />
+                                <div class="input-group" style="height: 150px;">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">聊天文本
+                                        </button>
+                                    </div>
+                                    <textarea id="content" placeholder="" class="form-control" style="height: 150px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row btn-group-m-t">
+                            <div class="col-sm-3">
+                                <#button btnCss="info" name="解析" id="ensure" icon="fa-check" clickFun="VssAgent.analyze()"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button btnCss="info" name="发送邮箱" id="ensure" icon="fa-check" clickFun="VssAgent.email()"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button btnCss="info" name="下载" id="ensure" icon="fa-check" clickFun="VssAgent.down()"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button btnCss="info" name="清空" id="ensure" icon="fa-check" clickFun="VssAgent.clear()"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssAgent/vssAgent.js"></script>
+<script src="${ctxPath}/static/js/common/download.js"></script>
+@}
